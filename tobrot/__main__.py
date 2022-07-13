@@ -459,7 +459,8 @@ _  /___/  __/  __/ /__ _  / / /    |
 
     ''')
     logging.info(f"{(app.get_me()).first_name} [@{(app.get_me()).username}] Has Started Running...🏃💨💨")
-    logging.info(f"User : {(userBot.get_me()).first_name} Has Started Revolving...♾️⚡️")
+    if userBot: logging.info(f"User : {(userBot.get_me()).first_name} Has Started Revolving...♾️⚡️")
+    else: logging.info("for use 4 gb features, enter string session")
 
     idle()
     
