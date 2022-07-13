@@ -34,7 +34,7 @@ async def sendMessage(text: str, message:Message):
     try:
         return await message._client.send_message(message.chat.id,
                             reply_to_message_id=message.id,
-                            text=text, allow_sending_without_reply=True,
+                            text=text,
                             parse_mode=enums.ParseMode.HTML)
     except Exception as e:
         LOGGER.error(str(e))
