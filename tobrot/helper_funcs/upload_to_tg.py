@@ -135,7 +135,6 @@ async def upload_to_tg(
                 yt_thumb,
                 prm_atv
             )
-            LOGGER.info(sent message.id)
             if sent_message is not None:
                 dict_contatining_uploaded_files[
                     os.path.basename(local_file_name)
