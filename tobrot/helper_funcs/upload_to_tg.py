@@ -170,7 +170,6 @@ async def upload_to_tg(
         else:
             sizze = os.path.getsize(local_file_name)
             LOGGER.info("Files Less Than 2 GB")
-            prm_atv = False
             sent_message = await upload_single_file(
                 message,
                 local_file_name,
@@ -179,7 +178,7 @@ async def upload_to_tg(
                 client,
                 edit_media,
                 yt_thumb,
-                prm_atv
+                False
             )
             if sent_message is not None:
                 dict_contatining_uploaded_files[
@@ -392,7 +391,7 @@ async def upload_single_file(
                 disable_notification=True,
                 progress=prog.progress_for_pyrogram,
                 progress_args=(
-                    f"◆━━━━━━◆ ❃ ◆━━━━━━◆\n\n┏━━━━━━━━━━━━━━━━╻\n┣⚡️ 𝐅𝐢𝐥𝐞𝐧𝐚𝐦𝐞 : `{os.path.basename(local_file_name)}`",
+                    f"◆━━━━━━◆ ❃ ◆━━━━━━◆\n\n┏━━━━━━━━━━━━━━━━╻\n┣⚡️ Filename: `{os.path.basename(local_file_name)}`",
                     start_time,
                 ),
             )
@@ -408,7 +407,7 @@ async def upload_single_file(
                     disable_notification=True,
                     progress=prog.progress_for_pyrogram,
                     progress_args=(
-                        f"◆━━━━━━◆ ❃ ◆━━━━━━◆\n\n┏━━━━━━━━━━━━━━━━╻\n┣⚡️ 𝐅𝐢𝐥𝐞𝐧𝐚𝐦𝐞 : `{os.path.basename(local_file_name)}`",
+                        f"◆━━━━━━◆ ❃ ◆━━━━━━◆\n\n┏━━━━━━━━━━━━━━━━╻\n┣⚡️ Filename: `{os.path.basename(local_file_name)}`",
                         start_time,
                     ),
                 )

@@ -105,7 +105,7 @@ DOWNLOAD_LOCATION = "./DOWNLOADS"
 # chunk size that should be used with requests
 CHUNK_SIZE = int(os.environ.get("CHUNK_SIZE", "128"))
 # default thumbnail to be used in the videos
-DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "https://telegra.ph/file/3a7f09b89943b51cdba38.jpg")
+DEF_THUMB_NAIL_VID_S = os.environ.get("DEF_THUMB_NAIL_VID_S", "https://telegra.ph/file/9763f9dabbc0a51f2b800.jpg")
 # maximum message length in Telegram
 MAX_MESSAGE_LENGTH = 4096
 # set timeout for subprocess
@@ -203,8 +203,6 @@ LEECH_LOG = os.environ.get("LEECH_LOG", "-1001569981856")
 EX_LEECH_LOG = os.environ.get("EX_LEECH_LOG", "")
 EXCEP_CHATS = os.environ.get("EXCEP_CHATS", "")
 BOT_PM = os.environ.get("BOT_PM", "True")
-SERVER_HOST = os.environ.get("SERVER_HOST", "Heroku")
-
 # 4 GB Upload Utils >>>>>>>>>>>
 PRM_LOG = os.environ.get("PRM_LOG", "-1001620169370")
 
