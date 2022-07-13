@@ -197,7 +197,7 @@ if __name__ == "__main__":
     bot.set_my_commands(botcmds)
 
     # Starting The Bot
-    if userBot: userBot.start()
+    
     app.start()
     
     ##############################################################################

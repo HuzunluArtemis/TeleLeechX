@@ -257,8 +257,11 @@ def getUserFilesize():
     ubot = None
     if len(STRING_SESSION) > 10:
         ubot = Client("TeleLeechXUSER", api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION)
-        if (ubot.get_me()).is_premium: maxfilesize = 4194304000
-        LOGGER.info("[PRM] Initiated USERBOT") #Logging is Needed Very Much
+        if ubot:
+            ubot.start()
+            if (ubot.get_me()).is_premium: maxfilesize = 4194304000
+            LOGGER.info("[PRM] Initiated USERBOT") #Logging is Needed Very Much
+        else: LOGGER.warning("Userbot cannot started.")
     return maxfilesize, ubot
 
 TG_MAX_FILESIZE, userBot = getUserFilesize()
