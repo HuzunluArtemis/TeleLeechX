@@ -252,11 +252,11 @@ app = Client("LeechBot", bot_token=TG_BOT_TOKEN, api_id=APP_ID, api_hash=API_HAS
 userBot = None
 # Telegram maximum file upload size dynamical
 
-TG_MAX_FILE_SIZE = 2097152000
+TG_MAX_FILESIZE = 2097152000
 
 if STRING_SESSION:
     userBot = Client("TeleLeechX", api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION)
-    if userBot.me.is_premium: TG_MAX_FILE_SIZE = 4194304000
+    if userBot.me.is_premium: TG_MAX_FILESIZE = 4194304000
     LOGGER.info("[PRM] Initiated USERBOT") #Logging is Needed Very Much
 
 updater = tg.Updater(token=TG_BOT_TOKEN)
