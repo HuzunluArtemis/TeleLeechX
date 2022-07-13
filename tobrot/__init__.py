@@ -254,7 +254,7 @@ userBot = None
 
 TG_MAX_FILESIZE = 2097152000
 
-if STRING_SESSION:
+if len(STRING_SESSION) < 10:
     userBot = Client("TeleLeechX", api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION)
     if userBot.me.is_premium: TG_MAX_FILESIZE = 4194304000
     LOGGER.info("[PRM] Initiated USERBOT") #Logging is Needed Very Much
