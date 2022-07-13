@@ -1,0 +1,38 @@
+{
+  "name": "Tele-LeechX",
+  "description": "A Powerful Telegram Torrent (and YouTube-DL) Leecher based on Pyrogram. Powered by @FuZionX and @FuZionXLeech",
+  "logo": "https://telegra.ph/file/8abf8d2addb8f4d982d8a.jpg",
+  "keywords": [
+    "telegram"
+  ],
+  "repository": "https://github.com/5MysterySD/Tele-LeechX",
+  "success_url": "https://t.me/FuZionX",
+  "website": "https://github.com/5MysterySD/Tele-LeechX",
+  "env": {
+    "ENV": {
+      "description": "Setting this to ANYTHING will enable Webhooks when in env mode",
+      "value": "ANYTHING"
+    },
+    "APP_ID": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": ""
+    },
+    "API_HASH": {
+      "description": "Get this value from https://my.telegram.org",
+      "value": ""
+    },
+    "TG_BOT_TOKEN": {
+      "description": "Get this value from @BotFather by Making New Bot and Paste the API token.",
+      "value": ""
+    },
+    "AUTH_CHANNEL": {
+      "description": "Should be an integer. The BOT API ID of the Telegram Group, Where the Bot should work., Put Group ID. Multiple ID separated by Single Space",
+      "value": ""
+    },
+    "OWNER_ID": {
+      "description": "Should be an integer. ID of owner of bot. Get it by sending /info to @MissRose_Bot",
+      "value": ""
+    }
+  },
+  "stack": "container"
+}
