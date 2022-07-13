@@ -135,11 +135,11 @@ async def upload_to_tg(
                 yt_thumb,
                 prm_atv
             )
-            LOGGER.info(sent_message.message_id)
+            LOGGER.info(sent message.id)
             if sent_message is not None:
                 dict_contatining_uploaded_files[
                     os.path.basename(local_file_name)
-                ] = sent_message.message_id
+                ] = sent_messagid
             else:
                 return
         elif os.path.getsize(local_file_name) > TG_MAX_FILESIZE:
