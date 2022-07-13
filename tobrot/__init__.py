@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | gautamajay52 | MaxxRider | 5MysterySD | Other Contributors 
-#
 # Copyright 2022 - TeamTele-LeechX
-# 
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
-# All Right Reserved 
+# https://huzunluartemis.github.io/TeleLeechX 
 
 
 import asyncio
@@ -91,10 +89,10 @@ for imp in ["TG_BOT_TOKEN", "APP_ID", "API_HASH", "OWNER_ID", "AUTH_CHANNEL"]:
 '''
 
 # The Telegram API things >>>>>>>>>>>
-TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "5139162631:AAHGWHHbnbu7k5jOjXW-axcNuJcSRpBktr4")
-APP_ID = os.environ.get("APP_ID", "6878048")
-API_HASH = os.environ.get("API_HASH", "3833ae3a7415af46df46a83a3ba2c432")
-OWNER_ID = int(os.environ.get("OWNER_ID", "1242011540"))
+TG_BOT_TOKEN = os.environ.get("TG_BOT_TOKEN", "232452345:23453245")
+APP_ID = os.environ.get("APP_ID", "23452345")
+API_HASH = os.environ.get("API_HASH", "234523452345")
+OWNER_ID = int(os.environ.get("OWNER_ID", "2345234532"))
 
 # Authorised Chat Functions >>>>>>>>>>>
 AUTH_CHANNEL = [int(x) for x in os.environ.get("AUTH_CHANNEL", "-1001270496331 -1001508663868").split()]
@@ -167,7 +165,7 @@ HELP_COMMAND = os.environ.get("HELP_COMMAND", "help")
 SPEEDTEST = os.environ.get("SPEEDTEST", "speedtest")
 TSEARCH_COMMAND = os.environ.get("TSEARCH_COMMAND", "tshelp")
 MEDIAINFO_CMD = os.environ.get("MEDIAINFO_CMD", "mediainfo")
-UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "@HuzunluArtemis")
+UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "Anonymous")
 CAP_STYLE = os.environ.get("CAP_STYLE", "code")
 BOT_NO = os.environ.get("BOT_NO", "")
 
@@ -189,19 +187,17 @@ STRING_SESSION = os.environ.get("STRING_SESSION", "")
 #Bot Command [IMDB]  >>>>>>>>>>>
 CUSTOM_CAPTION = os.environ.get("CUSTOM_CAPTION", "")
 MAX_LIST_ELM = os.environ.get("MAX_LIST_ELM", None)
-DEF_IMDB_TEMPLATE = os.environ.get("IMDB_TEMPLATE", """<i><b>⚡𝐓𝐢𝐭𝐥𝐞: </b> {title}
-<b>⚡𝐈𝐌𝐃𝐁 𝐑𝐚𝐭𝐢𝐧𝐠 :</b> <code>{rating} </code>
-<b>⚡𝐐𝐮𝐚𝐥𝐢𝐭𝐲:  </b>
-<b>⚡𝐑𝐞𝐥𝐞𝐚𝐬𝐞 𝐃𝐚𝐭𝐞: </b> {release_date}
-<b>⚡𝐆𝐞𝐧𝐫𝐞: </b>{genres}
-<b>⚡️𝐈𝐌𝐃𝐁: </b>{url}
-<b>⚡𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞:  </b>{languages}
-<b>⚡𝐂𝐨𝐮𝐧𝐭𝐫𝐲: </b> {countries}
-<b>⚡𝐒𝐮𝐛𝐭𝐢𝐭𝐥𝐞𝐬: </b>
-
-<b>⚡𝐒𝐭𝐨𝐫𝐲 𝐋𝐢𝐧𝐞: </b><code>{plot}</code>
-
-⚡️✅ 𝑪𝒍𝒊𝒄𝒌 𝑫𝒐𝒘𝒏 𝒂𝒏𝒅 𝑺𝒕𝒂𝒓𝒕 𝒕𝒉𝒆 𝑩𝒐𝒕 𝒕𝒐 𝑮𝒆𝒕 𝒕𝒉𝒆 𝑭𝒊𝒍𝒆 ✅ !! ⬇️ ⬇️""")
+DEF_IMDB_TEMPLATE = os.environ.get("IMDB_TEMPLATE", """<i><b>⚡Title: </b> {title}
+<b>⚡IMDB Rating:</b> <code>{rating} </code>
+<b>⚡Quality:  </b>
+<b>⚡Release Date: </b> {release_date}
+<b>⚡Genre: </b>{genres}
+<b>⚡IMDB: </b>{url}
+<b>⚡Language:  </b>{languages}
+<b>⚡Country: </b> {countries}
+<b>⚡Subtitles: </b>
+<b>⚡Story Line: </b><code>{plot}</code>
+""")
 
 #Bot Command [Bot PM & Log Channel]  >>>>>>>>>>>
 LEECH_LOG = os.environ.get("LEECH_LOG", "-1001569981856")

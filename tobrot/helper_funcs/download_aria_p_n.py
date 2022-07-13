@@ -315,8 +315,8 @@ async def call_apropriate_function(
                 return True, None
             try:
                 message_to_send = ""
-                mention_req_user = f"┏ 🗃 𝙇𝙚𝙚𝙘𝙝 𝘾𝙤𝙢𝙥𝙡𝙚𝙩𝙚 !! 🗃\n┃\n┣ 𝐔𝐬𝐞𝐫 : {u_men} \n┣🆔️ 𝐈𝐃 : #ID{user_id}\n┃\n"
-                message_credits = f"┃\n┃ #FXUploads\n┃\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️"
+                mention_req_user = f"┏ 🗃 Finished 🗃\n┃\n┣ User: {u_men} \n┣🆔️ 𝐈𝐃 : #ID{user_id}\n┃\n"
+                message_credits = f"┃\n┃ #Uploads\n┃\n┗━♦️Powered By {UPDATES_CHANNEL}♦️"
                 for key_f_res_se in final_response:
                     local_file_name = key_f_res_se
                     message_id = final_response[key_f_res_se]

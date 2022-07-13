@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) 5MysterySD
-#
 # Copyright 2022 - TeamTele-LeechX
-# 
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
-# All Right Reserved
+# https://huzunluartemis.github.io/TeleLeechX
 
 import re
 import datetime 

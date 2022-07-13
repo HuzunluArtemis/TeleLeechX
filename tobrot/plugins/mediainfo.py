@@ -3,11 +3,9 @@
 # (c) @MysterySD (https://github.com/code-rgb/USERGE-X/issues/9)
 # Copyright (C) 2020 BY - GitHub.com/code-rgb [TG - @deleteduser420]
 # Taken From Slam-mirrorbot, I thereby Take No Extra Credit on Code !!
-#
 # Copyright 2022 - TeamTele-LeechX
-# 
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
-# All Right Reserved
+# https://huzunluartemis.github.io/TeleLeechX
 
 import asyncio
 import os
@@ -92,7 +90,7 @@ async def mediainfo(client, message):
 ┃• <b>File ID :</b> <code>{x_media['file_id']}</code>
 ┃• <b>Media Type :</b> <code>{text_}</code>
 ┃
-┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹
+┗━♦️Powered By {UPDATES_CHANNEL}♦️━╹
 """
     markup = InlineKeyboardMarkup([[InlineKeyboardButton(text="Mᴇᴅɪᴀ Iɴғᴏ", url=link)]])
     await process.edit_text(text=textup, reply_markup=markup)

@@ -1,16 +1,13 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | gautamajay52 | 5MysterySD | Other Contributors 
-#
 # Copyright 2022 - TeamTele-LeechX
-# 
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
-# All Right Reserved
+# https://huzunluartemis.github.io/TeleLeechX
 
 
 import asyncio
 import io
-import logging
 import os
 import shutil
 import sys
@@ -45,13 +42,13 @@ from tobrot.UserDynaConfig import UserDynaConfig
 async def upload_as_doc(client, message):
     user_specific_config[message.from_user.id]=UserDynaConfig(message.from_user.id,True)
     u_men = message.from_user.mention
-    await message.reply_text(f"┏━━ 🛠  𝗧𝗼𝗴𝗴𝗹𝗲 𝗦𝗲𝘁𝘁𝗶𝗻𝗴𝘀 :\n┣👤 𝐔𝐬𝐞𝐫 : {u_men} \n┣🆔️ 𝐈𝐃 : #ID{message.from_user.id}\n┃\n┣🏷 𝐓𝐨𝐠𝐠𝐥𝐞 : 📁<code>Document 📂</code>\n┃\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹")
+    await message.reply_text(f"┏━━ 🛠  Toggle Settings :\n┣👤 User: {u_men} \n┣🆔️ 𝐈𝐃 : #ID{message.from_user.id}\n┃\n┣🏷 Toggle : 📁<code>Document 📂</code>\n┃\n┗━♦️Powered By {UPDATES_CHANNEL}♦️━╹")
 
 
 async def upload_as_video(client, message):
     user_specific_config[message.from_user.id]=UserDynaConfig(message.from_user.id,False)
     u_men = message.from_user.mention
-    await message.reply_text(f"┏━━ 🛠  𝗧𝗼𝗴𝗴𝗹𝗲 𝗦𝗲𝘁𝘁𝗶𝗻𝗴𝘀 :\n┣👤 𝐔𝐬𝐞𝐫 : {u_men} \n┣🆔️ 𝐈𝐃 : #ID{message.from_user.id}\n┃\n┣🏷𝐓𝐨𝐠𝐠𝐥𝐞 : <code>🎞 Video 🎞</code>\n┃\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹")
+    await message.reply_text(f"┏━━ 🛠  Toggle Settings :\n┣👤 User: {u_men} \n┣🆔️ 𝐈𝐃 : #ID{message.from_user.id}\n┃\n┣🏷Toggle : <code>🎞 Video 🎞</code>\n┃\n┗━♦️Powered By {UPDATES_CHANNEL}♦️━╹")
  
 
 async def status_message_f(
@@ -59,7 +56,7 @@ async def status_message_f(
 ):  # weird code but 'This is the way' @gautamajay52
     aria_i_p = await aria_start()
     # Show All Downloads
-    to_edit = await message.reply("🧭 𝐆𝐞𝐭𝐭𝐢𝐧𝐠 𝐂𝐮𝐫𝐫𝐞𝐧𝐭 𝐒𝐭𝐚𝐭𝐮𝐬 . .")
+    to_edit = await message.reply("🧭 Getting Status...")
     chat_id = int(message.chat.id)
     mess_id = int(to_edit.id)
     async with _lock:
@@ -92,18 +89,18 @@ async def status_message_f(
                 percentage = int(file.progress_string(0).split('%')[0])
                 prog = "[{0}{1}]".format("".join([FINISHED_PROGRESS_STR for i in range(math.floor(percentage / 5))]),"".join([UN_FINISHED_PROGRESS_STR for i in range(20 - math.floor(percentage / 5))]))
                 msg += f"\n┏━━━━━━━━━━━━━━━━╻"
-                msg += f"\n┣🔰𝐍𝐚𝐦𝐞: <code>{downloading_dir_name}</code>"
-                msg += f"\n┣🔰𝐒𝐭𝐚𝐭𝐮𝐬: <i>Downloading...📥</i>"
+                msg += f"\n┣🔰Name: <code>{downloading_dir_name}</code>"
+                msg += f"\n┣🔰Status: <i>Downloading...📥</i>"
                 msg += f"\n┃<code>{prog}</code>"
-                msg += f"\n┣🔰𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐝: <code>{file.progress_string()}</code> <b>of</b> <code>{file.total_length_string()}</code>"
-                msg += f"\n┣🔰𝐒𝐩𝐞𝐞𝐝: <code>{file.download_speed_string()}</code>,"
+                msg += f"\n┣🔰Downloaded: <code>{file.progress_string()}</code> <b>of</b> <code>{file.total_length_string()}</code>"
+                msg += f"\n┣🔰Speed: <code>{file.download_speed_string()}</code>,"
                 msg += f"🔰𝐄𝐓𝐀: <code>{file.eta_string()}</code>"  
                 #umen = f'<a href="tg://user?id={file.message.from_user.id}">{file.message.from_user.first_name}</a>'
                 #msg += f"\n<b>👤User:</b> {umen} (<code>{file.message.from_user.id}</code>)"
                 #msg += f"\n<b>⚠️Warn:</b> <code>/warn {file.message.from_user.id}</code>"
                 msg += f"\n{msgg}"
-                msg += f"\n┣🔰𝐂𝐚𝐧𝐜𝐞𝐥: <code>/{CANCEL_COMMAND_G} {file.gid}</code>"
-                msg += f"\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹\n"
+                msg += f"\n┣🔰Cancel: <code>/{CANCEL_COMMAND_G} {file.gid}</code>"
+                msg += f"\n┗━♦️Powered By {UPDATES_CHANNEL}♦️━╹\n"
 
         hr, mi, se = up_time(time.time() - BOT_START_TIME)
         total, used, free = shutil.disk_usage(".")
@@ -123,9 +120,9 @@ async def status_message_f(
         )
 
         umen = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>'
-        mssg = f"\n❣𝙎𝙩𝙖𝙩𝙪𝙨 𝙍𝙚𝙦𝙪𝙚𝙨𝙩𝙚𝙙 𝘽𝙮 : {umen} (<code>{message.from_user.id}</code>)\n◆━━━━━━◆ ❃ ◆━━━━━━◆"
+        mssg = f"\n❣By: {umen} (<code>{message.from_user.id}</code>)\n◆━━━━━━◆ ❃ ◆━━━━━━◆"
         if msg == "":
-            msg = f"\n┏━━━━━━━━━━━━━━━╻\n┃\n┃ ⚠️ <b>No Active, Queued or Paused \n┃ Torrents / Direct Links ⚠️</b>\n┃\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹\n"
+            msg = f"\n┏━━━━━━━━━━━━━━━╻\n┃\n┃ ⚠️ <b>No Active, Queued or Paused \n┃ Torrents / Direct Links ⚠️</b>\n┃\n┗━♦️Powered By {UPDATES_CHANNEL}♦️━╹\n"
             msg = mssg + "\n" + msg + "\n" + ms_g
             await to_edit.edit(msg)
             break

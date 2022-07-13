@@ -1,12 +1,11 @@
+# https://huzunluartemis.github.io/TeleLeechX
+
 import asyncio
-import os
 import shlex 
 import shutil
 import aria2p
 import re
-
-from tobrot import LOGGER, DOWNLOAD_LOCATION
-from pyrogram import Client
+from tobrot import DOWNLOAD_LOCATION
 from typing import Tuple
 
 async def runcmd(cmd: str) -> Tuple[str, str, int, int]:

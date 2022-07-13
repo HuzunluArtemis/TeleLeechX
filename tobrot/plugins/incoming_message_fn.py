@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | gautamajay52 | MaxxRider | 5MysterySD | Other Contributors 
-#
 # Copyright 2022 - TeamTele-LeechX
-# 
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
-# All Right Reserved
+# https://huzunluartemis.github.io/TeleLeechX
 
 
 import os
@@ -203,7 +201,7 @@ async def incoming_message_f(client:Client, message:Message):
         
         u_men = message.from_user.mention
         u_id = message.from_user.id 
-        await i_m_sefg.edit_text(f"┏━━━━━━━━━━━━━━━━╻\n┣👤 𝐔𝐬𝐞𝐫 : {u_men}({u_id}) \n┃\n┃ <code>⚡️ Your Request Has Been Added To The Status List ⚡️</code> \n┃\n┣ <b><u>Send</u> /{STATUS_COMMAND} <u>To Check Your Progress</u></b>\n┃\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹")
+        await i_m_sefg.edit_text(f"┏━━━━━━━━━━━━━━━━╻\n┣👤 User: {u_men}({u_id}) \n┃\n┃ <code>⚡️ Your Request Has Been Added To The Status List ⚡️</code> \n┃\n┣ <b><u>Send</u> /{STATUS_COMMAND} <u>To Check Your Progress</u></b>\n┃\n┗━♦️Powered By {UPDATES_CHANNEL}♦️━╹")
         # try to download the "link"
         is_zip = False
         is_cloud = False

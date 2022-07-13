@@ -74,14 +74,14 @@ class Progress:
                 ''.join([UN_FINISHED_PROGRESS_STR for i in range(20 - math.floor(percentage / 5))]),
                 round(percentage, 2))
             #cpu = "{psutil.cpu_percent()}%"
-            tmp = progress + "┣⚡️ 𝐓𝐨𝐭𝐚𝐥 : `〚{1}〛`\n┣⚡️ 𝐃𝐨𝐰𝐧𝐥𝐨𝐚𝐝𝐞𝐝  :` 〚{0}〛`\n┣⚡️ 𝐒𝐩𝐞𝐞𝐝 : ` 〚{2}〛`\n┣⚡️ 𝐄𝐓𝐀 : `〚{3}〛`".format(
+            tmp = progress + "┣⚡️ 𝐓𝐨𝐭𝐚𝐥 : `〚{1}〛`\n┣⚡️ Downloaded  :` 〚{0}〛`\n┣⚡️ Speed : ` 〚{2}〛`\n┣⚡️ 𝐄𝐓𝐀 : `〚{3}〛`".format(
                 humanbytes(current),
                 humanbytes(total),
                 humanbytes(speed),
                 # elapsed_time if elapsed_time != '' else "0 s",
                 estimated_total_time if estimated_total_time != "" else "0 s",
             )
-            tmp += f"\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹\n\n◆━━━━━━◆ ❃ ◆━━━━━━◆"
+            tmp += f"\n┗━♦️Powered By {UPDATES_CHANNEL}♦️━╹\n\n◆━━━━━━◆ ❃ ◆━━━━━━◆"
             try:
                 if not self._mess.photo:
                     await self._mess.edit_text(

@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K | gautamajay52 | MaxxRider | 5MysterySD | Other Contributors 
-#
 # Copyright 2022 - TeamTele-LeechX
-# 
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
-# All Right Reserved
+# https://huzunluartemis.github.io/TeleLeechX
 
 
 import logging
@@ -121,7 +119,7 @@ async def start(client, message):
     start_string = f'''
 ┏ <i>Dear {u_men}</i>,
 ┣ <b>NOTE:</b> <code>All The Uploaded Leeched Contents By You Will Be Sent Here In Your Private Chat From Now.</code>
-┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️
+┗━♦️Powered By {UPDATES_CHANNEL}♦️
 '''
     if message.chat.type == enums.ChatType.PRIVATE:
         await message.reply_text(
@@ -434,7 +432,7 @@ if __name__ == "__main__":
     ##############################################################################
 
     logging.info(f"{(app.get_me()).first_name} [@{(app.get_me()).username}] Has Started Running...🏃💨💨")
-    if userBot: logging.info(f"User : {(userBot.get_me()).first_name} Has Started Revolving...♾️⚡️")
+    if userBot: logging.info(f"User: {(userBot.get_me()).first_name} Has Started Revolving...♾️⚡️")
     else: logging.info("for use 4 gb features, enter string session")
 
     idle()
