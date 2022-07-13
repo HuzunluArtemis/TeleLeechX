@@ -16,16 +16,7 @@ from tobrot import (
     LOGGER,
     UPDATES_CHANNEL 
 )
-from pyrogram import Client
-
-logging.basicConfig(
-    level=logging.DEBUG, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
-
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
-
-
 
 class Progress:
     def __init__(self, from_user, client, mess: Message):
@@ -100,12 +91,7 @@ class Progress:
                     await self._mess.edit_caption(
                         caption="{}\n {}".format(ud_type, tmp)
                     )
-            except FloodWait as fd:
-                logger.warning(f"{fd}")
-                time.sleep(fd.x)
-            except Exception as ou:
-                logger.info(ou)
-
+            except: pass
 
 def humanbytes(size):
     # https://stackoverflow.com/a/49361727/4723940
@@ -119,7 +105,6 @@ def humanbytes(size):
         size /= power
         n += 1
     return str(round(size, 2)) + " " + Dic_powerN[n] + "B"
-
 
 def TimeFormatter(milliseconds: int) -> str:
     seconds, milliseconds = divmod(int(milliseconds), 1000)

@@ -138,7 +138,7 @@ async def upload_to_tg(
             if sent_message is not None:
                 dict_contatining_uploaded_files[
                     os.path.basename(local_file_name)
-                ] = sent_messagid
+                ] = sent_message.id
             else:
                 return
         elif os.path.getsize(local_file_name) > TG_MAX_FILESIZE:
@@ -431,7 +431,7 @@ async def upload_single_file(
                 chat_id=int(LEECH_LOG),
                 document=local_file_name,
                 thumb=thumb,
-                caption=f"<code>{base_file_name}</code>\n\n♨️ 𝕌𝕡𝕝𝕠𝕒𝕕𝕖𝕕 𝔹𝕪 @FXTorrentz ♨️",
+                caption=f"<code>{base_file_name}</code>",
                 parse_mode=enums.ParseMode.HTML,
                 disable_notification=True,
             )
@@ -453,7 +453,7 @@ async def upload_single_file(
                             chat_id=i, 
                             document=sent_message.document.file_id,
                             thumb=thumb,
-                            caption=f"<code>{base_file_name}</code>\n\n♨️ 𝕌𝕡𝕝𝕠𝕒𝕕𝕖𝕕 𝔹𝕪 @FXTorrentz ♨️",
+                            caption=f"<code>{base_file_name}</code>",
                             parse_mode=enums.ParseMode.HTML
                         )
                 except Exception as err:
@@ -569,7 +569,7 @@ async def upload_single_file(
                         sent_message = await message.sent_video(
                             chat_id=LEECH_LOG,
                             video=local_file_name,
-                            caption=f"<code>{base_file_name}</code>\n\n♨️ 𝕌𝕡𝕝𝕠𝕒𝕕𝕖𝕕 𝔹𝕪 @FXTorrentz ♨️",
+                            caption=f"<code>{base_file_name}</code>",
                             parse_mode=enums.ParseMode.HTML,
                             duration=duration,
                             width=width,
@@ -603,7 +603,7 @@ async def upload_single_file(
                                         video=sent_message.video.file_id,
                                         thumb=thumb,
                                         supports_streaming=True,
-                                        caption=f"<code>{base_file_name}</code>\n\n♨️ 𝕌𝕡𝕝𝕠𝕒𝕕𝕖𝕕 𝔹𝕪 @FXTorrentz ♨️",
+                                        caption=f"<code>{base_file_name}</code>",
                                         parse_mode=enums.ParseMode.HTML
                                     )
                             except Exception as err:
@@ -725,7 +725,7 @@ async def upload_single_file(
                             chat_id=LEECH_LOG,
                             document=local_file_name,
                             thumb=thumb,
-                            caption=f"<code>{base_file_name}</code>\n\n♨️ 𝕌𝕡𝕝𝕠𝕒𝕕𝕖𝕕 𝔹𝕪 @FXTorrentz ♨️",
+                            caption=f"<code>{base_file_name}</code>",
                             parse_mode=enums.ParseMode.HTML,
                             disable_notification=True,
                             progress=prog.progress_for_pyrogram,
@@ -752,7 +752,7 @@ async def upload_single_file(
                                         chat_id=i, 
                                         document=sent_message.document.file_id,
                                         thumb=thumb,
-                                        caption=f"<code>{base_file_name}</code>\n\n♨️ 𝕌𝕡𝕝𝕠𝕒𝕕𝕖𝕕 𝔹𝕪 @FXTorrentz ♨️",
+                                        caption=f"<code>{base_file_name}</code>",
                                         parse_mode=enums.ParseMode.HTML
                                     )
                             except Exception as err:
