@@ -249,16 +249,20 @@ multi_rclone_init()
 
 # Pyrogram Client Intialization >>>>>>>>>>>
 app = Client("LeechBot", bot_token=TG_BOT_TOKEN, api_id=APP_ID, api_hash=API_HASH, workers=343)
-userBot = None
+
 # Telegram maximum file upload size dynamical
 
-TG_MAX_FILESIZE = 2097152000
+def getPremium():
+    maxfilesize = 2097152000
+    ubot = None
+    if len(STRING_SESSION) > 10:
+        ubot = Client("TeleLeechXUSER", api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION)
+        LOGGER.info(ubot)
+        maxfilesize = 4194304000
+        LOGGER.info("[PRM] Initiated USERBOT") #Logging is Needed Very Much
+    return maxfilesize, ubot
 
-if len(STRING_SESSION) > 10:
-    userBot = Client("TeleLeechX", api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION)
-    LOGGER.info(userBot)
-    TG_MAX_FILESIZE = 4194304000
-    LOGGER.info("[PRM] Initiated USERBOT") #Logging is Needed Very Much
+TG_MAX_FILESIZE, userBot = getPremium()
 
 updater = tg.Updater(token=TG_BOT_TOKEN)
 bot = updater.bot
