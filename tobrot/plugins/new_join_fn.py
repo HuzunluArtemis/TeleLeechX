@@ -7,10 +7,7 @@
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
 # All Right Reserved
 
-import logging
-import pyrogram
 from tobrot import *
-
 from pyrogram import enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
@@ -19,15 +16,7 @@ async def new_join_f(client, message):
     if chat_type != enums.ChatType.PRIVATE:
         await message.reply_text(
             f"""<b>🙋🏻‍♂️ Hello dear!\n\n This Is A Leech Bot .This Chat Is Not Supposed To Use Me</b>\n\n<b>Current CHAT ID: <code>{message.chat.id}</code>""",
-            parse_mode=enums.ParseMode.HTML,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton('Channel', url='https://t.me/FuZionXTorrentQuater')
-                    ]
-                ]
-               )
-            )
+            parse_mode=enums.ParseMode.HTML)
         # leave chat
         await client.leave_chat(chat_id=message.chat.id, delete=True)
     # delete all other messages, except for AUTH_CHANNEL
@@ -51,7 +40,7 @@ async def help_message_f(client, message):
 ┃• <i>Access Every Feature That Bot Offers in Better Way </i>
 ┃• <i>Go through Commands to Get Help</i>
 ┃
-┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹""",
+┗━♦️ {UPDATES_CHANNEL}♦️━╹""",
         reply_markup = reply_markup,
         parse_mode = enums.ParseMode.HTML,
         disable_web_page_preview=True

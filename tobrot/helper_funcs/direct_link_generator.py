@@ -28,7 +28,7 @@ from lk21.extractors.bypasser import Bypass
 from bs4 import BeautifulSoup
 from base64 import standard_b64encode
 
-from tobrot import UPTOBOX_TOKEN, LOGGER, EMAIL, PWSSD, CRYPT, GDRIVE_FOLDER_ID, HUB_CRYPT, DRIVEFIRE_CRYPT, KATDRIVE_CRYPT, KOLOP_CRYPT, DRIVEBUZZ_CRYPT, GADRIVE_CRYPT
+from tobrot import INDEX_LINK, UPTOBOX_TOKEN, LOGGER, EMAIL, PWSSD, CRYPT, GDRIVE_FOLDER_ID, HUB_CRYPT, DRIVEFIRE_CRYPT, KATDRIVE_CRYPT, KOLOP_CRYPT, DRIVEBUZZ_CRYPT, GADRIVE_CRYPT
 from tobrot.helper_funcs.exceptions import DirectDownloadLinkException
 from tobrot.plugins import is_appdrive_link, is_gdtot_link 
 
@@ -670,7 +670,7 @@ def appdrive_dl(url: str, is_direct) -> str:
         #raise DirectDownloadLinkException(f"{info_parsed['error_message']}")
     if is_direct:
         linkx = urllib.parse.quote(info_parsed['name'])
-        INDEX_URL = f"https://covid.demonn.workers.dev/0:/FuZionXBot/{linkx}"
+        INDEX_URL = f"{INDEX_LINK}/{linkx}"
         return INDEX_URL 
     else:
         return info_parsed

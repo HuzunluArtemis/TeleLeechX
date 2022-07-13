@@ -359,7 +359,7 @@ async def searchhelp(self, message):
 ┃• /rarbg <i>[search query]</i>
 ┃• /ts <i>[search query]</i>
 ┃
-┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 @FuZionX♦️━╹
+┗━♦️ Powered by TeleLeechX ♦️━╹
 '''
     await message.reply(help_string, parse_mode=enums.ParseMode.HTML)
     #& CustomFilters.mirror_owner_filter Not Used 😉

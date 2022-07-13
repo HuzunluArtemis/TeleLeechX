@@ -1,13 +1,12 @@
 {
-  "name": "Tele-LeechX",
-  "description": "A Powerful Telegram Torrent (and yt-dlp) Leecher based on Pyrogram. Powered by @FuZionX and @FuZionXLeech",
+  "name": "TeleLeechX",
+  "description": "A Powerful Telegram Torrent (and yt-dlp) Leecher based on Pyrogram.",
   "logo": "https://telegra.ph/file/8abf8d2addb8f4d982d8a.jpg",
   "keywords": [
     "telegram"
   ],
-  "repository": "https://github.com/5MysterySD/Tele-LeechX",
-  "success_url": "https://t.me/FuZionX",
-  "website": "https://github.com/5MysterySD/Tele-LeechX",
+  "repository": "https://github.com/HuzunluArtemis/TeleLeechX",
+  "website": "https://github.com/HuzunluArtemis/TeleLeechX",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable Webhooks when in env mode",

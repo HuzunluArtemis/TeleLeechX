@@ -9,11 +9,9 @@
 
 
 import asyncio
-import logging
 import os
 import re
 import shutil
-import subprocess
 import time
 from functools import partial
 from pathlib import Path
@@ -28,9 +26,7 @@ from hachoir.parser import createParser
 from hurry.filesize import size
 from PIL import Image
 from pyrogram.errors import FloodWait, MessageNotModified
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.types import InputMediaAudio, InputMediaDocument, InputMediaVideo
-from requests.utils import requote_uri
 from tobrot import (
     DESTINATION_FOLDER,
     DOWNLOAD_LOCATION,
@@ -38,18 +34,15 @@ from tobrot import (
     INDEX_LINK,
     LOGGER,
     RCLONE_CONFIG,
-    TG_MAX_FILE_SIZE,
     UPLOAD_AS_DOC,
     CAP_STYLE,
-    CUSTOM_CAPTION,
-    gDict,
     user_specific_config,
     bot,
     LEECH_LOG,
     EXCEP_CHATS,
     EX_LEECH_LOG,
     BOT_PM,
-    TG_PRM_FILE_SIZE,
+    TG_MAX_FILESIZE,
     userBot,
     PRM_LOG,
     STRING_SESSION
@@ -131,7 +124,7 @@ async def upload_to_tg(
             )
     else:
         sizze = os.path.getsize(local_file_name)
-        if sizze < TG_PRM_FILE_SIZE and STRING_SESSION:
+        if sizze < TG_MAX_FILESIZE and STRING_SESSION:
             LOGGER.info(f"User Type : Premium ({from_user})")
             prm_atv = True
             sent_message = await upload_single_file(
@@ -151,7 +144,7 @@ async def upload_to_tg(
                 ] = sent_message.message_id
             else:
                 return
-        elif os.path.getsize(local_file_name) > TG_PRM_FILE_SIZE:
+        elif os.path.getsize(local_file_name) > TG_MAX_FILESIZE:
             LOGGER.info(f"User Type : Non Premium ({from_user})")
             i_m_s_g = await message.reply_text(
                 "<b><i>📑Telegram doesn't Support Uploading this File.</i></b>\n"

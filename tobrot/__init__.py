@@ -104,12 +104,6 @@ AUTH_CHANNEL += SUDO_USERS
 # Download Directory >>>>>>>>>>>
 DOWNLOAD_LOCATION = "./DOWNLOADS"
 
-# Telegram maximum file upload size
-MAX_FILE_SIZE = 50000000
-TG_MAX_FILE_SIZE = 2097152000
-TG_PRM_FILE_SIZE = 4194304000
-FREE_USER_MAX_FILE_SIZE = 50000000
-
 # chunk size that should be used with requests
 CHUNK_SIZE = int(os.environ.get("CHUNK_SIZE", "128"))
 # default thumbnail to be used in the videos
@@ -147,8 +141,8 @@ GYTDL_COMMAND = os.environ.get("GYTDL_COMMAND", "gytdl")
 
 #Bot Command [RClone]  >>>>>>>>>>>
 RCLONE_CONFIG = os.environ.get("RCLONE_CONFIG", "")
-DESTINATION_FOLDER = os.environ.get("DESTINATION_FOLDER", "FuZionXBot")
-INDEX_LINK = os.environ.get("INDEX_LINK", "https://covid.demonn.workers.dev/0:/FuZionXBot https://infyplexultra.mysterydemon.workers.dev/0:/FuZionXBot")
+DESTINATION_FOLDER = os.environ.get("DESTINATION_FOLDER", "TeleLeechX")
+INDEX_LINK = os.environ.get("INDEX_LINK", "https://infyplexultra.mysterydemon.workers.dev/0:/TeleLeechX")
 TELEGRAM_LEECH_COMMAND = os.environ.get("TELEGRAM_LEECH_COMMAND", "tleech")
 TELEGRAM_LEECH_UNZIP_COMMAND = os.environ.get("TELEGRAM_LEECH_UNZIP_COMMAND", "tleechunzip")
 CANCEL_COMMAND_G = os.environ.get("CANCEL_COMMAND_G", "cancel")
@@ -173,7 +167,7 @@ HELP_COMMAND = os.environ.get("HELP_COMMAND", "help")
 SPEEDTEST = os.environ.get("SPEEDTEST", "speedtest")
 TSEARCH_COMMAND = os.environ.get("TSEARCH_COMMAND", "tshelp")
 MEDIAINFO_CMD = os.environ.get("MEDIAINFO_CMD", "mediainfo")
-UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "@FuZionX")
+UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", "@HuzunluArtemis")
 CAP_STYLE = os.environ.get("CAP_STYLE", "code")
 BOT_NO = os.environ.get("BOT_NO", "")
 
@@ -206,8 +200,6 @@ DEF_IMDB_TEMPLATE = os.environ.get("IMDB_TEMPLATE", """<i><b>⚡𝐓𝐢𝐭𝐥
 <b>⚡𝐒𝐮𝐛𝐭𝐢𝐭𝐥𝐞𝐬: </b>
 
 <b>⚡𝐒𝐭𝐨𝐫𝐲 𝐋𝐢𝐧𝐞: </b><code>{plot}</code>
-
-⚡️𝐉𝐨𝐢𝐧 𝐍𝐨𝐰 :  @FuZionX </i>
 
 ⚡️✅ 𝑪𝒍𝒊𝒄𝒌 𝑫𝒐𝒘𝒏 𝒂𝒏𝒅 𝑺𝒕𝒂𝒓𝒕 𝒕𝒉𝒆 𝑩𝒐𝒕 𝒕𝒐 𝑮𝒆𝒕 𝒕𝒉𝒆 𝑭𝒊𝒍𝒆 ✅ !! ⬇️ ⬇️""")
 
@@ -258,8 +250,13 @@ multi_rclone_init()
 # Pyrogram Client Intialization >>>>>>>>>>>
 app = Client("LeechBot", bot_token=TG_BOT_TOKEN, api_id=APP_ID, api_hash=API_HASH, workers=343)
 userBot = None
+# Telegram maximum file upload size dynamical
+
+TG_MAX_FILE_SIZE = 2097152000
+
 if STRING_SESSION:
-    userBot = Client("Tele-UserBot", api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION)
+    userBot = Client("TeleLeechX", api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION)
+    if userBot.me.is_premium: TG_MAX_FILE_SIZE = 4194304000
     LOGGER.info("[PRM] Initiated USERBOT") #Logging is Needed Very Much
 
 updater = tg.Updater(token=TG_BOT_TOKEN)

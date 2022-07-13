@@ -9,7 +9,7 @@ import time
 
 from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
-from tobrot import LOGGER, TG_PRM_FILE_SIZE, SP_LIT_ALGO_RITH_M
+from tobrot import LOGGER, TG_MAX_FILESIZE, SP_LIT_ALGO_RITH_M
 
 
 async def split_large_files(input_file):
@@ -31,7 +31,7 @@ async def split_large_files(input_file):
         LOGGER.info(total_duration)
         total_file_size = os.path.getsize(input_file)
         LOGGER.info(total_file_size)
-        minimum_duration = (total_duration / total_file_size) * (TG_PRM_FILE_SIZE)
+        minimum_duration = (total_duration / total_file_size) * (TG_MAX_FILESIZE)
         # casting to int cuz float Time Stamp can cause errors
         minimum_duration = int(minimum_duration)
 
@@ -81,7 +81,7 @@ async def split_large_files(input_file):
             "split",
             "--numeric-suffixes=1",
             "--suffix-length=5",
-            f"--bytes={TG_PRM_FILE_SIZE}",
+            f"--bytes={TG_MAX_FILESIZE}",
             input_file,
             o_d_t,
         ]
@@ -96,7 +96,7 @@ async def split_large_files(input_file):
         file_genertor_command = [
             "rar",
             "a",
-            f"-v{TG_PRM_FILE_SIZE}b",
+            f"-v{TG_MAX_FILESIZE}b",
             "-m0",
             o_d_t,
             input_file,

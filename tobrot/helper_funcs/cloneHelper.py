@@ -8,22 +8,17 @@
 # All Right Reserved
 
 import asyncio
-import logging
 import os
 import re
-import subprocess
 
 import pyrogram.types as pyrogram
 import requests
 from tobrot import (
     DESTINATION_FOLDER,
-    DOWNLOAD_LOCATION,
     EDIT_SLEEP_TIME_OUT,
     INDEX_LINK,
     LOGGER,
     RCLONE_CONFIG,
-    TG_MAX_FILE_SIZE,
-    UPLOAD_AS_DOC,
 )
 from tobrot.plugins import is_appdrive_link, is_gdtot_link
 from tobrot.helper_funcs.direct_link_generator import gdtot, appdrive_dl, url_link_generate
@@ -191,7 +186,7 @@ class CloneHelper:
                     _idno = _idno + 1
             button_markup = pyrogram.InlineKeyboardMarkup(button)
             msg = await self.lsg.edit_text(
-                f"📨 **Name** : `{self.name}`\n\n📚 **Type** : __{_up}__\n\n🗃 **Total Files** : `Calculating ..` 🛃\n📊 **Total Size** : `Calculating ..` 🛃\n\n👤 Req By: {self.u_men} ( #ID{self.u_id} )",
+                f"📨 **Name** : `{self.name}`\n\n📚 **Type** : __{_up}__\n\n🗃 **Total Files** : `Calculating ..` 🛃\n📊 **Total Size** : `Calculating ..` 🛃\n\n👤 By: {self.u_men} ( #ID{self.u_id} )",
                 reply_markup=button_markup,
             )
             g_cmd = [
