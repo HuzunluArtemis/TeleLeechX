@@ -22,7 +22,7 @@ from telegram.ext import CommandHandler
 from telegram import ParseMode
 
 from urllib.parse import quote as urlencode, urlsplit
-
+from pyrogram.types import Message
 from pyrogram import Client, filters, emoji, enums
 from pyrogram.parser import html as pyrogram_html
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -35,11 +35,12 @@ from tobrot.helper_funcs.filters import CustomFilters
 search_lock = asyncio.Lock()
 search_info = {False: dict(), True: dict()}
 
-def sendMessage(text: str, bot, update: Update):
+def sendMessage(text: str, message:Message):
     try:
-        return bot.send_message(update.message.chat_id,
-                            reply_to_message_id=update.message.id,
-                            text=text, allow_sending_without_reply=True,  parse_mode=enums.ParseMode.HTML)
+        return message._client.send_message(message.chat.id,
+                            reply_to_message_id=message.id,
+                            text=text, allow_sending_without_reply=True,
+                            parse_mode=enums.ParseMode.HTML)
     except Exception as e:
         LOGGER.error(str(e))
 

@@ -8,21 +8,19 @@
 # All Right Reserved
 
 
-import io
 import logging
 import os
-import sys
-import traceback
 import datetime 
-
+import heroku3
 from telegram import ParseMode
 from pyrogram import enums
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from pyrogram import Client, filters, idle
-from pyrogram.raw import functions, types
+from pyrogram.types import Message
+from pyrogram import filters, idle
 from pyrogram.handlers import CallbackQueryHandler, MessageHandler
+from sys import executable
+from subprocess import run as srun, check_output
 
-from tobrot import app, bot, dispatcher, userBot
+from tobrot import HEROKU_API_KEY, HEROKU_APP_NAME, app, bot, dispatcher, userBot, alive
 from tobrot import (
     OWNER_ID,
     AUTH_CHANNEL,
@@ -119,42 +117,59 @@ botcmds = [
 
 async def start(client, message):
     """/start command"""
-    buttons = [
-            [
-                InlineKeyboardButton('🚦 Bot Stats 🚦', url='https://t.me/FXTorrentz/28'),
-                InlineKeyboardButton('🛃 FX Group 🛃', url='https://t.me/+BgIhdNizM61jOGNl'),
-            ]
-            ]
-    reply_markup=InlineKeyboardMarkup(buttons)
     u_men = message.from_user.mention 
     start_string = f'''
 ┏ <i>Dear {u_men}</i>,
-┃
-┃ <i>If You Want To Use Me, You Have To Join @FXTorrentz</i>
-┃
 ┣ <b>NOTE:</b> <code>All The Uploaded Leeched Contents By You Will Be Sent Here In Your Private Chat From Now.</code>
-┃
 ┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️
 '''
     if message.chat.type == enums.ChatType.PRIVATE:
         await message.reply_text(
            start_string,
-           reply_markup=reply_markup,
            parse_mode=enums.ParseMode.HTML,
            quote=True
         )
     else:
         await message.reply_text(f"**I Am Alive and Working, Send /help to Know How to Use Me !** ✨", parse_mode=enums.ParseMode.MARKDOWN)
 
-
-def restart(client, message): 
-    restart_message = sendMessage("Restarting, Please wait!", message.tobrot, client)
-    with open(".restartmsg", "w") as f: 
-        f.truncate(0)       
-        f.write(f"{restart_message.chat.id}\n{restart_message.id}\n") 
-    clean_all()
-    os.execl(executable, executable, "-m", "bot")
-
+def restart(_, message:Message):
+    cmd = message.text.split(' ', 1)
+    dynoRestart = False
+    dynoKill = False
+    if len(cmd) == 2:
+        dynoRestart = (cmd[1].lower()).startswith('d')
+        dynoKill = (cmd[1].lower()).startswith('k')
+    if (not HEROKU_API_KEY) or (not HEROKU_APP_NAME):
+        LOGGER.info("If you want Heroku features, fill HEROKU_APP_NAME HEROKU_API_KEY vars.")
+        dynoRestart = False
+        dynoKill = False
+    if dynoRestart:
+        LOGGER.info("Dyno Restarting.")
+        restart_message = sendMessage("Dyno Restarting.", message)
+        with open(".restartmsg", "w") as f:
+            f.truncate(0)
+            f.write(f"{restart_message.chat.id}\n{restart_message.id}\n")
+        heroku_conn = heroku3.from_key(HEROKU_API_KEY)
+        app = heroku_conn.app(HEROKU_APP_NAME)
+        app.restart()
+    elif dynoKill:
+        LOGGER.info("Killing Dyno. MUHAHAHA")
+        sendMessage("Killed Dyno.", message)
+        heroku_conn = heroku3.from_key(HEROKU_API_KEY)
+        app = heroku_conn.app(HEROKU_APP_NAME)
+        proclist = app.process_formation()
+        for po in proclist:
+            app.process_formation()[po.type].scale(0)
+    else:
+        LOGGER.info("Normally Restarting.")
+        restart_message = sendMessage("Normally Restarting.", message)
+        alive.kill()
+        clean_all()
+        srun(["python3", "update.py"])
+        with open(".restartmsg", "w") as f:
+            f.truncate(0)
+            f.write(f"{restart_message.chat.id}\n{restart_message.id}\n")
+        os.execl(executable, executable, "-m", "bot")
 
 if __name__ == "__main__":
     # create download directory, if not exist
