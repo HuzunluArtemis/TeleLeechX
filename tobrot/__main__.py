@@ -146,20 +146,19 @@ async def restart(_, message:Message):
     if dynoRestart:
         LOGGER.info("Dyno Restarting.")
         restart_message = await sendMessage("Dyno Restarting.", message)
-        with open(".restartmsg", "w") as f:
-            f.truncate(0)
-            f.write(f"{restart_message.chat.id}\n{restart_message.id}\n")
+        app.stop()
+        userBot.stop()
         heroku_conn = heroku3.from_key(HEROKU_API_KEY)
-        app = heroku_conn.app(HEROKU_APP_NAME)
-        app.restart()
+        appx = heroku_conn.app(HEROKU_APP_NAME)
+        appx.restart()
     elif dynoKill:
         LOGGER.info("Killing Dyno. MUHAHAHA")
         await sendMessage("Killed Dyno.", message)
         heroku_conn = heroku3.from_key(HEROKU_API_KEY)
-        app = heroku_conn.app(HEROKU_APP_NAME)
-        proclist = app.process_formation()
+        appx = heroku_conn.app(HEROKU_APP_NAME)
+        proclist = appx.process_formation()
         for po in proclist:
-            app.process_formation()[po.type].scale(0)
+            appx.process_formation()[po.type].scale(0)
     else:
         LOGGER.info("Normally Restarting.")
         restart_message = await sendMessage("Normally Restarting.", message)
