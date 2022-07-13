@@ -15,9 +15,8 @@ import shutil
 import time
 from functools import partial
 from pathlib import Path
-import pyrogram.types as pyrogram
 import requests
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 from telegram import ParseMode
 from pyrogram import enums
 from hachoir.metadata import extractMetadata
@@ -352,7 +351,7 @@ AUDIO_SUFFIXES = ("MP3", "M4A", "M4B", "FLAC", "WAV", "AIF", "OGG", "AAC", "DTS"
 IMAGE_SUFFIXES = ("JPG", "JPX", "PNG", "WEBP", "CR2", "TIF", "BMP", "JXR", "PSD", "ICO", "HEIC", "JPEG")
 
 async def upload_single_file(
-    message, local_file_name, caption_str, from_user, client, edit_media, yt_thumb, prm_atv: bool
+    message:Message, local_file_name, caption_str, from_user, client, edit_media, yt_thumb, prm_atv: bool
 ):
     base_file_name = os.path.basename(local_file_name)
     await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
@@ -566,7 +565,7 @@ async def upload_single_file(
                             ),
                          )
                     else:
-                        sent_message = await message.sent_video(
+                        sent_message = await message.reply_video(
                             chat_id=LEECH_LOG,
                             video=local_file_name,
                             caption=f"<code>{base_file_name}</code>",
