@@ -11,6 +11,7 @@
 import asyncio
 import logging
 import os
+import subprocess
 import time
 from collections import defaultdict
 from logging.handlers import RotatingFileHandler
@@ -21,8 +22,8 @@ import telegram.ext as tg
 
 from pyrogram import Client
 
-if os.path.exists("FuZionXLogs.txt"):
-    with open("FuZionXLogs.txt", "r+") as f_d:
+if os.path.exists("log.txt"):
+    with open("log.txt", "r+") as f_d:
         f_d.truncate(0)
 
 # the logging things >>>>>>>>>>>
@@ -32,7 +33,7 @@ logging.basicConfig(
     datefmt="%d-%b-%y %H:%M:%S",
     handlers=[
         RotatingFileHandler(
-            "FuZionXLogs.txt", maxBytes=50000000, backupCount=10
+            "log.txt", maxBytes=50000000, backupCount=10
         ),
         logging.StreamHandler(),
     ],
@@ -45,6 +46,9 @@ LOGGER = logging.getLogger(__name__)
 
 user_specific_config=dict()
 dotenv.load_dotenv("config.env")
+
+alive = subprocess.Popen(["python3", "alive.py"])
+time.sleep(0.5)
 
 # checking compulsory variable NOT NEEDED FOR OKTETO!! Just Use Your Brain
 '''
