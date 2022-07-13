@@ -19,7 +19,7 @@ import urllib.request
 import dotenv
 import requests
 import telegram.ext as tg
-
+from pyrogram.types import User
 from pyrogram import Client
 
 if os.path.exists("log.txt"):
@@ -252,17 +252,16 @@ app = Client("LeechBot", bot_token=TG_BOT_TOKEN, api_id=APP_ID, api_hash=API_HAS
 
 # Telegram maximum file upload size dynamical
 
-def getPremium():
+def getUserFilesize():
     maxfilesize = 2097152000
     ubot = None
     if len(STRING_SESSION) > 10:
         ubot = Client("TeleLeechXUSER", api_id=APP_ID, api_hash=API_HASH, session_string=STRING_SESSION)
-        LOGGER.info(ubot)
-        maxfilesize = 4194304000
+        if userBot.get_me().is_premium: maxfilesize = 4194304000
         LOGGER.info("[PRM] Initiated USERBOT") #Logging is Needed Very Much
     return maxfilesize, ubot
 
-TG_MAX_FILESIZE, userBot = getPremium()
+TG_MAX_FILESIZE, userBot = getUserFilesize()
 
 updater = tg.Updater(token=TG_BOT_TOKEN)
 bot = updater.bot
