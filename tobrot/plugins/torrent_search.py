@@ -7,23 +7,18 @@
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
 # All Right Reserved
 
-import os
 import time
 import html
 import asyncio
 import aiohttp
-import json
 import feedparser
-import requests
 import itertools
 
-from telegram.update import Update
 from telegram.ext import CommandHandler
-from telegram import ParseMode
 
 from urllib.parse import quote as urlencode, urlsplit
 from pyrogram.types import Message
-from pyrogram import Client, filters, emoji, enums
+from pyrogram import filters, emoji, enums
 from pyrogram.parser import html as pyrogram_html
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
@@ -35,9 +30,9 @@ from tobrot.helper_funcs.filters import CustomFilters
 search_lock = asyncio.Lock()
 search_info = {False: dict(), True: dict()}
 
-def sendMessage(text: str, message:Message):
+async def sendMessage(text: str, message:Message):
     try:
-        return message._client.send_message(message.chat.id,
+        return await message._client.send_message(message.chat.id,
                             reply_to_message_id=message.id,
                             text=text, allow_sending_without_reply=True,
                             parse_mode=enums.ParseMode.HTML)
@@ -367,8 +362,6 @@ async def searchhelp(self, message):
 ┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 @FuZionX♦️━╹
 '''
     await message.reply(help_string, parse_mode=enums.ParseMode.HTML)
-    #sendMessage(help_string, context.bot, update)
-    
     #& CustomFilters.mirror_owner_filter Not Used 😉
 SEARCHHELP_HANDLER = CommandHandler(BotCommands.TsHelpCommand, searchhelp, filters=(CustomFilters.authorized_chat | CustomFilters.authorized_user), run_async=True)
 dispatcher.add_handler(SEARCHHELP_HANDLER)

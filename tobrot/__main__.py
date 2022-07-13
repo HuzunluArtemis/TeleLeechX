@@ -132,7 +132,7 @@ async def start(client, message):
     else:
         await message.reply_text(f"**I Am Alive and Working, Send /help to Know How to Use Me !** ✨", parse_mode=enums.ParseMode.MARKDOWN)
 
-def restart(_, message:Message):
+async def restart(_, message:Message):
     cmd = message.text.split(' ', 1)
     dynoRestart = False
     dynoKill = False
@@ -145,7 +145,7 @@ def restart(_, message:Message):
         dynoKill = False
     if dynoRestart:
         LOGGER.info("Dyno Restarting.")
-        restart_message = sendMessage("Dyno Restarting.", message)
+        restart_message = await sendMessage("Dyno Restarting.", message)
         with open(".restartmsg", "w") as f:
             f.truncate(0)
             f.write(f"{restart_message.chat.id}\n{restart_message.id}\n")
@@ -154,7 +154,7 @@ def restart(_, message:Message):
         app.restart()
     elif dynoKill:
         LOGGER.info("Killing Dyno. MUHAHAHA")
-        sendMessage("Killed Dyno.", message)
+        await sendMessage("Killed Dyno.", message)
         heroku_conn = heroku3.from_key(HEROKU_API_KEY)
         app = heroku_conn.app(HEROKU_APP_NAME)
         proclist = app.process_formation()
@@ -162,7 +162,7 @@ def restart(_, message:Message):
             app.process_formation()[po.type].scale(0)
     else:
         LOGGER.info("Normally Restarting.")
-        restart_message = sendMessage("Normally Restarting.", message)
+        restart_message = await sendMessage("Normally Restarting.", message)
         alive.kill()
         clean_all()
         srun(["python3", "update.py"])
@@ -188,7 +188,6 @@ if __name__ == "__main__":
     elif OWNER_ID:
         try:
             text = f"<b>Bᴏᴛ Rᴇsᴛᴀʀᴛᴇᴅ !!</b>\n\n<b>📊 𝙃𝙤𝙨𝙩 :</b> <code>{SERVER_HOST}</code>\n{ist}\n\n<b>ℹ️ 𝙑𝙚𝙧𝙨𝙞𝙤𝙣 :</b> <code>3.2.15</code>"
-            #bot.sendMessage(chat_id=OWNER_ID, text=text, parse_mode=enums.ParseMode.HTML)
             if AUTH_CHANNEL:
                 for i in AUTH_CHANNEL:
                     bot.sendMessage(chat_id=i, text=text, parse_mode=ParseMode.HTML)
