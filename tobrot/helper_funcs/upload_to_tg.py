@@ -565,7 +565,7 @@ async def upload_single_file(
                             ),
                          )
                     else:
-                        sent_message = await message.reply_video(
+                        sent_message = await userBot.send_video(
                             chat_id=LEECH_LOG,
                             video=local_file_name,
                             caption=f"<code>{base_file_name}</code>",
@@ -580,7 +580,7 @@ async def upload_single_file(
                             progress_args=(
                                 f"<b>🔰Status : <i>Starting Uploading...📤</i></b>\n\n🗃<b> File Name</b>: `{os.path.basename(local_file_name)}`",
                                 start_time,
-                            ),
+                            )
                          )
                         if BOT_PM:
                             try:
