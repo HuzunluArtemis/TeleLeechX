@@ -8,14 +8,12 @@
 # All Right Reserved
 
 
-import asyncio
-import logging
 import os
 import time
 from pathlib import Path
-import aria2p
+from pyrogram.types import Message
 import requests
-
+from pyrogram import Client
 from telegram import ParseMode
 from tobrot import (
     DOWNLOAD_LOCATION,
@@ -53,7 +51,7 @@ from tobrot.helper_funcs.ytplaylist import yt_playlist_downg
 from pyrogram import enums
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-async def incoming_purge_message_f(client, message):
+async def incoming_purge_message_f(client:Client, message:Message):
     """/purge command"""
     print(message.client)
     i_m_sefg2 = await message.reply_text("Purging...", quote=True)
@@ -66,7 +64,7 @@ async def incoming_purge_message_f(client, message):
     await i_m_sefg2.delete()
 
 
-async def incoming_message_f(client, message):
+async def incoming_message_f(client:Client, message:Message):
     """/leech command or /gleech command"""
     user_command = message.command[0]
     g_id = message.from_user.id
@@ -81,7 +79,7 @@ async def incoming_message_f(client, message):
         LOGGER.info("ForceSubscribe Start")
         try:
             msg1 = f'Added your Requested link to Download\n'
-            send = await message.sent_message(message.from_user.id, text=msg1)
+            send = await client.send_message(message.from_user.id, text=msg1)
             send.delete()
         except Exception as e:
             LOGGER.warning(e)
@@ -252,7 +250,7 @@ async def incoming_message_f(client, message):
         )
 
 
-async def incoming_youtube_dl_f(client, message):
+async def incoming_youtube_dl_f(client:Client, message:Message):
     """ /ytdl command """
     current_user_id = message.from_user.id
     u_men = message.from_user.mention
@@ -311,7 +309,7 @@ async def incoming_youtube_dl_f(client, message):
 
 
 # playlist
-async def g_yt_playlist(client, message):
+async def g_yt_playlist(client:Client, message:Message):
     """ /pytdl command """
     user_command = message.command[0]
     usr_id = message.from_user.id
@@ -342,7 +340,7 @@ async def g_yt_playlist(client, message):
  #
 
 
-async def g_clonee(client, message):
+async def g_clonee(client:Client, message:Message):
     """ /gclone command """
     g_id = message.from_user.id
     _link = message.text.split(" ", maxsplit=1)
@@ -375,7 +373,7 @@ __Google Drive, GDToT, AppDrive__"""
         )
 
 
-async def rename_tg_file(client, message):
+async def rename_tg_file(client:Client, message:Message):
     usr_id = message.from_user.id
     if not message.reply_to_message:
         await message.reply("<b>⚠️ Opps ⚠️</b>\n\n <b><i>⊠ Reply with Telegram Media (File / Video)⁉️</b>", quote=True)

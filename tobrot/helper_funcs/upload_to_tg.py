@@ -416,7 +416,7 @@ async def upload_single_file(
                 )
                 LOGGER.info("UserBot Upload : Completed")
             prm_id = sent_msg.id
-            sent_message = bot.copy_message(
+            sent_message:Message = bot.copy_message(
                 chat_id=message.chat.id,
                 from_chat_id=int(PRM_LOG),
                 message_id=prm_id,
@@ -426,7 +426,7 @@ async def upload_single_file(
             )
             
         else:
-            sent_message = await bot.send_document(
+            sent_message:Message = await bot.send_document(
                 chat_id=int(LEECH_LOG),
                 document=local_file_name,
                 thumb=thumb,
