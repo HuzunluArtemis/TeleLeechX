@@ -15,9 +15,9 @@ import subprocess
 import time
 from collections import defaultdict
 from logging.handlers import RotatingFileHandler
-from sys import exit
 import urllib.request
 import dotenv
+import requests
 import telegram.ext as tg
 
 from pyrogram import Client
@@ -45,7 +45,35 @@ logging.getLogger("PIL").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 
 user_specific_config=dict()
-dotenv.load_dotenv("config.env")
+
+def getConfig(name: str):
+    return os.environ[name]
+CONFIG_FILE_URL = os.environ.get('CONFIG_FILE_URL')
+try:
+    if len(CONFIG_FILE_URL) == 0:
+        raise TypeError
+    try:
+        res = requests.get(CONFIG_FILE_URL)
+        if res.status_code == 200:
+            with open('config.env', 'wb+') as f:
+                f.write(res.content)
+        else:
+            LOGGER.error(f"Failed to download config.env {res.status_code}")
+    except Exception as e:
+        LOGGER.error(f"CONFIG_FILE_URL: {e}")
+except:
+    pass
+
+try:
+    HEROKU_API_KEY = getConfig('HEROKU_API_KEY')
+    HEROKU_APP_NAME = getConfig('HEROKU_APP_NAME')
+    if len(HEROKU_API_KEY) == 0 or len(HEROKU_APP_NAME) == 0:
+        raise KeyError
+except:
+    HEROKU_APP_NAME = None
+    HEROKU_API_KEY = None
+
+dotenv.load_dotenv("config.env", override=True)
 
 alive = subprocess.Popen(["python3", "alive.py"])
 time.sleep(0.5)
