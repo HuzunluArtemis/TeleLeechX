@@ -3,15 +3,11 @@
 # -*- coding: utf-8 -*-
 # (c) xiaoqi-beta | gautamajay52
 
-import logging
-import os
-import re
 from configparser import ConfigParser
-
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import pyrogram.types as pyrogram
 from pyrogram.types import CallbackQuery
 from tobrot import LOGGER, OWNER_ID
-
 
 async def rclone_command_f(client, message):
     """/rclone command"""
@@ -25,7 +21,7 @@ async def rclone_command_f(client, message):
         inline_keyboard = []
         for section in sections:
             ikeyboard = [
-                pyrogram.InlineKeyboardButton(
+                InlineKeyboardButton(
                     section, callback_data=(f"rclone_{section}").encode("UTF-8")
                 )
             ]
@@ -37,12 +33,12 @@ async def rclone_command_f(client, message):
 There are {len(sections)} sections in your rclone.conf file, 
 please choose which section you want to use:"""
         ikeyboard = [
-            pyrogram.InlineKeyboardButton(
+            InlineKeyboardButton(
                 "‼️ Cancel ‼️", callback_data=(f"rcloneCancel").encode("UTF-8")
             )
         ]
         inline_keyboard.append(ikeyboard)
-        reply_markup = pyrogram.InlineKeyboardMarkup(inline_keyboard)
+        reply_markup = InlineKeyboardMarkup(inline_keyboard)
         await message.reply_text(text=msg_text, reply_markup=reply_markup)
     else:
         await message.reply_text("You have no permission!")

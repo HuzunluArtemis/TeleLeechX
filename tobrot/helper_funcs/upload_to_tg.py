@@ -15,10 +15,9 @@ import shutil
 import time
 from functools import partial
 from pathlib import Path
-
 import pyrogram.types as pyrogram
 import requests
-
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from telegram import ParseMode
 from pyrogram import enums
 from hachoir.metadata import extractMetadata
@@ -258,7 +257,7 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         gjay = size(os.path.getsize(file_upload))
         button = []
         button.append(
-            [pyrogram.InlineKeyboardButton(text="☁️ CloudUrl ☁️", url=f"{gauti}")]
+            [InlineKeyboardButton(text="☁️ CloudUrl ☁️", url=f"{gauti}")]
         )
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{os.path.basename(file_upload)}"
@@ -266,12 +265,12 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
             LOGGER.info(tam_link)
             button.append(
                 [
-                    pyrogram.InlineKeyboardButton(
+                    InlineKeyboardButton(
                         text="ℹ️ IndexUrl ℹ️", url=f"{tam_link}"
                     )
                 ]
             )
-        button_markup = pyrogram.InlineKeyboardMarkup(button)
+        button_markup = InlineKeyboardMarkup(button)
         await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
         await messa_ge.reply_text(
             f"🤖: Uploaded successfully `{os.path.basename(file_upload)}` <a href='tg://user?id={g_id}'>🤒</a>\n📀 Size: {gjay}",
@@ -326,7 +325,7 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
         LOGGER.info(gjay)
         button = []
         button.append(
-            [pyrogram.InlineKeyboardButton(text="☁️ CloudUrl ☁️", url=f"{gautii}")]
+            [InlineKeyboardButton(text="☁️ CloudUrl ☁️", url=f"{gautii}")]
         )
         if INDEX_LINK:
             indexurl = f"{INDEX_LINK}/{os.path.basename(file_upload)}/"
@@ -334,12 +333,12 @@ async def upload_to_gdrive(file_upload, message, messa_ge, g_id):
             LOGGER.info(tam_link)
             button.append(
                 [
-                    pyrogram.InlineKeyboardButton(
+                    InlineKeyboardButton(
                         text="ℹ️ IndexUrl ℹ️", url=f"{tam_link}"
                     )
                 ]
             )
-        button_markup = pyrogram.InlineKeyboardMarkup(button)
+        button_markup = InlineKeyboardMarkup(button)
         await asyncio.sleep(EDIT_SLEEP_TIME_OUT)
         await messa_ge.reply_text(
             f"🤖: Uploaded successfully `{os.path.basename(file_upload)}` <a href='tg://user?id={g_id}'>🤒</a>\n📀 Size: {gjay}",

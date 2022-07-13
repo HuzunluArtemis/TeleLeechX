@@ -51,6 +51,7 @@ from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 from tobrot.helper_funcs.youtube_dl_extractor import extract_youtube_dl_formats
 from tobrot.helper_funcs.ytplaylist import yt_playlist_downg
 from pyrogram import enums
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 async def incoming_purge_message_f(client, message):
     """/purge command"""

@@ -10,8 +10,6 @@
 import asyncio
 import os
 import re
-
-import pyrogram.types as pyrogram
 import requests
 from tobrot import (
     DESTINATION_FOLDER,
@@ -24,6 +22,7 @@ from tobrot.plugins import is_appdrive_link, is_gdtot_link
 from tobrot.helper_funcs.direct_link_generator import gdtot, appdrive_dl, url_link_generate
 from re import search
 from urllib.parse import parse_qs, urlparse
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 class CloneHelper:
     def __init__(self, mess):
@@ -161,7 +160,7 @@ class CloneHelper:
             button = []
             button.append(
                 [
-                    pyrogram.InlineKeyboardButton(
+                    InlineKeyboardButton(
                         text="☁️ GDrive Link ☁️", url=f"{gau_link}"
                     )
                 ]
@@ -178,13 +177,13 @@ class CloneHelper:
                     LOGGER.info(tam_link)
                     button.append(
                         [
-                            pyrogram.InlineKeyboardButton(
+                            InlineKeyboardButton(
                                 text=f"⚡️ Index Link #{_idno}⚡️", url=f"{tam_link}"
                             )
                         ]
                     )
                     _idno = _idno + 1
-            button_markup = pyrogram.InlineKeyboardMarkup(button)
+            button_markup = InlineKeyboardMarkup(button)
             msg = await self.lsg.edit_text(
                 f"📨 **Name** : `{self.name}`\n\n📚 **Type** : __{_up}__\n\n🗃 **Total Files** : `Calculating ..` 🛃\n📊 **Total Size** : `Calculating ..` 🛃\n\n👤 By: {self.u_men} ( #ID{self.u_id} )",
                 reply_markup=button_markup,
@@ -246,7 +245,7 @@ class CloneHelper:
         except IndexError:
             await asyncio.sleep(3)
             await self.lsg.delete()
-            await gcl(self)
+            # await gcl(self)
         except Exception as err:
             LOGGER.info(err)
             await self.lsg.edit_text(f"‼️ **ERROR** ‼️\n\n`{err}`")
