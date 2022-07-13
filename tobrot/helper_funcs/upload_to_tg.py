@@ -109,7 +109,6 @@ async def upload_to_tg(
             new_m_esg = await message.reply_text(
                 f"<b><i>🛠 Extracting : </i></b> <code>{len(directory_contents)}</code> <b>File(s) <a href='tg://user?id={from_user}'></a></b>",
                 quote=True
-                # reply_to_message_id=message.id
             )
         for single_file in directory_contents:
             # recursion: will this FAIL somewhere?
